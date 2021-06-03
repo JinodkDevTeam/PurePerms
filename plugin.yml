@@ -30,6 +30,9 @@ permissions:
   pperms.command.ppinfo:
     default: true
     description: "Allows you to get current PurePerms information."
+  pperms.command.grpinfo:
+    default: op
+    description: "Nothing"
   pperms.command.ppreload:
     description: "Allows you to reload all PurePerms configurations."
   pperms.command.rmgroup:

@@ -41,6 +41,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 use Ramsey\Uuid\Uuid;
+use RuntimeException;
 
 class PurePerms extends PluginBase
 {
@@ -297,7 +298,7 @@ class PurePerms extends PluginBase
         $uniqueId = $this->getValidUUID($player);
 
         if(!isset($this->attachments[$uniqueId]))
-            throw new \RuntimeException("Tried to calculate permissions on " .  $player->getName() . " using null attachment");
+            throw new RuntimeException("Tried to calculate permissions on " .  $player->getName() . " using null attachment");
 
         return $this->attachments[$uniqueId];
     }
@@ -404,16 +405,11 @@ class PurePerms extends PluginBase
     public function getGroups()
     {
         if($this->isGroupsLoaded !== true)
-            throw new \RuntimeException("No groups loaded, maybe a provider error?");
+            throw new RuntimeException("No groups loaded, maybe a provider error?");
 
         return $this->groups;
     }
 
-    /**
-     * @param $node
-     * @param array ...$vars
-     * @return string
-     */
     public function getMessage($node, ...$vars)
     {
         return $this->messages->getMessage($node, ...$vars);
@@ -682,7 +678,7 @@ class PurePerms extends PluginBase
     public function updateGroups()
     {
         if(!$this->isValidProvider())
-            throw new \RuntimeException("Failed to load groups: Invalid data provider");
+            throw new RuntimeException("Failed to load groups: Invalid data provider");
 
         // Make group list empty first to reload it
         $this->groups = [];
@@ -693,7 +689,7 @@ class PurePerms extends PluginBase
         }
 
         if(empty($this->groups))
-            throw new \RuntimeException("No groups found, I guess there's definitely something wrong with your data provider... *cough cough*");
+            throw new RuntimeException("No groups found, I guess there's definitely something wrong with your data provider... *cough cough*");
 
         $this->isGroupsLoaded = true;
 

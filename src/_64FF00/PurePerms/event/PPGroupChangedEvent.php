@@ -33,7 +33,7 @@ class PPGroupChangedEvent extends PluginEvent
      * @param PPGroup $group
      * @param $worldName
      */
-    public function __construct(PurePerms $plugin, IPlayer $player, PPGroup $group, string $worldName)
+    public function __construct(PurePerms $plugin, IPlayer $player, PPGroup $group, ?string $worldName)
     {
         parent::__construct($plugin);
 
@@ -61,7 +61,7 @@ class PPGroupChangedEvent extends PluginEvent
     /**
      * @return string
      */
-    public function getWorldName()
+    public function getWorldName(): ?string
     {
         return $this->worldName;
     }

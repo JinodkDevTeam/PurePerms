@@ -33,10 +33,9 @@ class PPRankExpiredEvent extends PluginEvent
      * @param PPGroup $group
      * @param $worldName
      */
-    public function __construct(PurePerms $plugin, IPlayer $player, string $worldName)
+    public function __construct(PurePerms $plugin, IPlayer $player, ?string $worldName)
     {
         parent::__construct($plugin);
-
         $this->player = $player;
         $this->worldName = $worldName;
     }
